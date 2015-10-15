@@ -20,9 +20,7 @@ public class AutoOpv1 extends LinearOpMode
 
         waitForStart();
 
-        int a = 0;
-
-        do
+        for (int x = 0; x < 4; x++)
         {
             leftMotor.setPower(1.0);
             rightMotor.setPower(1.0);
@@ -33,11 +31,10 @@ public class AutoOpv1 extends LinearOpMode
             rightMotor.setPower(-0.5);
 
             sleep(500);
+        }
 
-            a++;
-        }while(a<4);
-
-
+        leftMotor.setPower(0);
+        rightMotor.setPower(0);
 
     }
 }
