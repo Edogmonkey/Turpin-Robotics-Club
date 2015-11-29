@@ -12,11 +12,24 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 public class Drive{
     static DcMotor motor1;
     static DcMotor motor2;
-    public Drive(DcMotor motorLeft, DcMotor motorRight) {
-        motor1 = motorLeft;
-        motor2 = motorRight;
-        motor1.setDirection(DcMotor.Direction.REVERSE);
+    public Drive(DcMotor motorLeft, DcMotor motorRight, boolean red) {
+
+        if(red == true) {
+            motor2 = motorRight;
+            motor1 = motorLeft;
+            motor1.setDirection(DcMotor.Direction.REVERSE);
         }
+        else {
+            motor1 = motorLeft;
+            motor2 = motorRight;
+            motor2.setDirection(DcMotor.Direction.REVERSE);
+        }
+        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+
+
+
+    }
 
 
 
