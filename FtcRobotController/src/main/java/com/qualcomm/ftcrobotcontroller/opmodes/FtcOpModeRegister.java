@@ -63,11 +63,12 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register ("Tank Drive", TankDrive.class);
     manager.register ("OneRotation", OneRotation.class);
     //manager.register ("Mechanim Drive", mechanimDrive.class);
-    manager.register ("motor test", motortest.class);
-    manager.register ("Make A Square", AutoSquare.class);
-    manager.register ("This Is A Button", TouchTest.class);
-    manager.register ("ODS Test", SensorTest.class);
-    manager.register ("Servo Test", ServoTest.class);
+    //manager.register ("motor test", motortest.class);
+    //manager.register ("Make A Square", AutoSquare.class);
+    //manager.register ("This Is A Button", TouchTest.class);
+    //manager.register ("ODS Test", SensorTest.class);
+    //manager.register ("Servo Test", ServoTest.class);
+    manager.register ("RedBlueTest", RedBlueTest.class);
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */

@@ -2,9 +2,12 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.robocol.Telemetry;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by Cole Salvato on 11/27/2015.
@@ -12,6 +15,13 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 public class Drive{
     static DcMotor motor1;
     static DcMotor motor2;
+
+    static int ENCODER_CPR = 1440;
+    static double GEAR_RATIO = 1;
+    static double WHEEL_DIAMETER = 2.7;
+
+
+
     public Drive(DcMotor motorLeft, DcMotor motorRight, boolean red) {
 
         if(red == true) {
@@ -20,8 +30,8 @@ public class Drive{
             motor1.setDirection(DcMotor.Direction.REVERSE);
         }
         else {
-            motor1 = motorLeft;
-            motor2 = motorRight;
+            motor1 = motorRight;
+            motor2 = motorLeft;
             motor2.setDirection(DcMotor.Direction.REVERSE);
         }
         motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
@@ -33,14 +43,14 @@ public class Drive{
 
 
 
-    public static boolean forward(double DISTANCE, double power){
+    public static boolean forward(double DISTANCE, double power) throws InterruptedException{
+
+
+        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
 
 
 
-
-        final int ENCODER_CPR = 1440;
-        final double GEAR_RATIO = 1;
-        final double WHEEL_DIAMETER = 2.7;
 
         final  double CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
         final  double ROTATIONS = DISTANCE / CIRCUMFERENCE;
@@ -52,38 +62,48 @@ public class Drive{
         motor1.setPower(power);
         motor2.setPower(power);
 
-        while(motor1.getCurrentPosition() < COUNTS && motor2.getCurrentPosition() < COUNTS)
-        {}
+        while(motor1.getCurrentPosition() < COUNTS && motor2.getCurrentPosition() < COUNTS) {}
         motor1.setPower(0);
         motor2.setPower(0);
+
+        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+
+        sleep(50);
+
         return true;
     }
 
 
 
-    public static boolean backward(double DISTANCE, double power){
+    public static boolean backward(double DISTANCE, double power) throws InterruptedException{
 
 
+        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
 
 
-        final int ENCODER_CPR = 1440;
-        final double GEAR_RATIO = 1;
-        final double WHEEL_DIAMETER = 2.7;
 
         final  double CIRCUMFERENCE = Math.PI * WHEEL_DIAMETER;
         final  double ROTATIONS = DISTANCE / CIRCUMFERENCE;
         final  double COUNTS = ENCODER_CPR * ROTATIONS * GEAR_RATIO;
-        motor1.setTargetPosition((int) COUNTS);
-        motor2.setTargetPosition((int) COUNTS);
+        motor1.setTargetPosition((int) -COUNTS);
+        motor2.setTargetPosition((int) -COUNTS);
         motor1.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
         motor2.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
         motor1.setPower(-power);
         motor2.setPower(-power);
 
-        while(motor1.getCurrentPosition() > COUNTS && motor2.getCurrentPosition() > COUNTS)
-        {}
+        while(motor1.getCurrentPosition() > -COUNTS && motor2.getCurrentPosition() > -COUNTS) {}
         motor1.setPower(0);
         motor2.setPower(0);
+
+        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+
+
+        sleep(50);
+
         return true;
     }
 
