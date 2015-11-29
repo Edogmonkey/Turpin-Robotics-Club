@@ -14,22 +14,24 @@ public class RedBlueTest extends LinearOpMode{
         myDrive = new Drive(hardwareMap.dcMotor.get("motor_1"),hardwareMap.dcMotor.get("motor_2"), red);
 
         waitForStart();
-        boolean next = myDrive.forward(24,0.5);
-        while (!next){}
-        next = false;
+
+
+       myDrive.forward(24,0.5);
+
+        myDrive.pointturn(-90,0.25);
+        myDrive.pointturn(180,0.25);
+       //myDrive.backward(24, 0.5);
 
 
 
-        next = myDrive.backward(24, 0.5);
-        while (!next){}
-        next = false;
+
+       //myDrive.forward(6,0.5);
 
 
-
-        next = myDrive.forward(0,0.5);
-        while (!next){}
-        next = false;
 
         telemetry.addData("The End", "Is Near");
     }
+
+
+
 }
