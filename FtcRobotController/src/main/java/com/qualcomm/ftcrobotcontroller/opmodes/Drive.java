@@ -149,5 +149,37 @@ public class Drive{
     }
 
 
+    public static void arcmountainturn(double radius, int degrees, double power) throws InterruptedException
+    {
+        //Sweep radius and power are of the outside track
+
+
+        //outside tread (motor2)
+        final  double ROTATIONS = (2 * radius * degrees) / (WHEEL_DIAMETER * 360);
+        final  double COUNTS = ENCODER_CPR * ROTATIONS * GEAR_RATIO;
+        //inside tread
+        double powerRatio = (2*radius-30)/(2*WHEEL_DIAMETER*radius);
+
+        motor2.setTargetPosition((int) COUNTS);
+        motor1.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+
+            motor1.setPower(power * powerRatio);
+            motor2.setPower(power);
+
+            while(motor2.getCurrentPosition() < COUNTS)
+            {}
+        motor1.setPower(0);
+        motor2.setPower(0);
+        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+
+        sleep(50);
+
+        return;
+
+    }
+
+
 
 }
