@@ -15,12 +15,12 @@ public class RedBlueTest extends LinearOpMode{
 
         waitForStart();
 
-        myDrive.arcmountainturn(24,90,0.5);
-       myDrive.forward(36,0.5);
+        sleep(10000);
+       myDrive.backward(72,0.5);
 
-        myDrive.pointturn(-90,0.25);
-        myDrive.pointturn(180,0.25);
-       //myDrive.backward(24, 0.5);
+        myDrive.pointturn(90,0.25);
+        //myDrive.pointturn(180,0.25);
+       myDrive.backward(72, 0.5);
 
 
 
