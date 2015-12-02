@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
  */
 public class TankDrive extends OpMode {
     boolean motorFast = false;
-    boolean twisting = false;
+    DcMotor lift;
     DcMotor right;
     DcMotor left;
     DcMotor twist;
@@ -20,7 +20,7 @@ public class TankDrive extends OpMode {
         right = hardwareMap.dcMotor.get("motor_2");
         left = hardwareMap.dcMotor.get("motor_1");
         twist = hardwareMap.dcMotor.get("motor_3");
-
+        lift = hardwareMap.dcMotor.get("motor_4");
         left.setDirection(DcMotor.Direction.REVERSE);
 
     }
@@ -53,18 +53,9 @@ public class TankDrive extends OpMode {
         }
         right.setPower(rightPower);
         left.setPower(leftPower);
-        if(gamepad1.x == true){
-            twist.setPower(0.5);
-            twisting = true;
-        }
-        if(gamepad1.y == true){
-            twist.setPower(-0.5);
-            twisting = true;
-        }
-        if(twisting == false){
-            twist.setPower(0);
-        }
-        twisting = false;
+        twist.setPower(gamepad2.left_stick_x * 0.5);
+        lift.setPower(gamepad2.left_stick_y * 0.6 + 0.15);
+
 
     }
     public void stop(){}
