@@ -15,21 +15,13 @@ public class ServoTest extends LinearOpMode{
     public void runOpMode() throws InterruptedException{
 
         Servo servo;
-
-
         servo = hardwareMap.servo.get("servo");
-
-
 
         for(int A=0; A <= 10; A++) {
             servo.setPosition(0);
             sleep(1000);
             servo.setPosition(1);
             sleep(1000);
-
         }
-
-
-
     }
 }

@@ -2,10 +2,8 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
-import com.qualcomm.robotcore.robocol.Telemetry;
 
 import static java.lang.Thread.sleep;
 
@@ -16,7 +14,7 @@ public class Drive{
     static DcMotor motor1;
     static DcMotor motor2;
 
-    static int ENCODER_CPR = 1440;
+    static int ENCODER_CPR = 1120;
     static double GEAR_RATIO = 1;
     static double WHEEL_DIAMETER = 2.7;
 
