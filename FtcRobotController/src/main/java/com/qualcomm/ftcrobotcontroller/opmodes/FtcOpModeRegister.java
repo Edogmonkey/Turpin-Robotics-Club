@@ -60,6 +60,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register("K9TeleOp", K9TeleOp.class);
     //manager.register ("PushBotAuto", PushBotAuto.class);
     //manager.register ("PushBotManual", PushBotManual.class);
+    manager.register("Armature_Test", ArmTest.class);
     manager.register ("Tank Drive", TankDrive.class);
     manager.register ("OneRotation", OneRotation.class);
     //manager.register ("Mechanim Drive", mechanimDrive.class);
@@ -74,7 +75,7 @@ public class FtcOpModeRegister implements OpModeRegister {
      */
 
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
-    //manager.register("MRRGBExample", MRRGBExample.class);
+    manager.register("MRRGBExample", MRRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
     //manager.register("HTRGBExample", HTRGBExample.class);
 
