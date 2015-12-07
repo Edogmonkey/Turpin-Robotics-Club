@@ -25,12 +25,14 @@ public class Drive{
         if(red == true) {
             motor2 = motorRight;
             motor1 = motorLeft;
-            motor1.setDirection(DcMotor.Direction.REVERSE);
+            //motor1.setDirection(DcMotor.Direction.REVERSE);
+            motor2.setDirection(DcMotor.Direction.REVERSE);
         }
         else {
             motor1 = motorRight;
             motor2 = motorLeft;
-            motor2.setDirection(DcMotor.Direction.REVERSE);
+            //motor2.setDirection(DcMotor.Direction.REVERSE);
+            motor1.setDirection(DcMotor.Direction.REVERSE);
         }
         motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
         motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
