@@ -53,16 +53,16 @@ public class FullUserControl extends OpMode
         if (gamepad2.dpad_up && gamepad2.dpad_down)
             lift.setPower(-0.25);
         else if (gamepad2.dpad_up && twist.getCurrentPosition() < ENCODER_LIMIT)
-            lift.setPower(-0.50 - 0.25);
+            lift.setPower(-0.50 + 0.25);
         else if (gamepad2.dpad_down)
             lift.setPower(0.50);
 
         if (gamepad2.left_trigger > 0){
             servo.setDirection(Servo.Direction.FORWARD);
-            servo.setPosition(gamepad2.left_trigger);}
+            servo.setPosition(1);}
         else if (gamepad2.right_trigger > 0){
             servo.setDirection(Servo.Direction.REVERSE);
-            servo.setPosition(gamepad2.right_trigger);}
+            servo.setPosition(1);}
         else
             servo.setPosition(0);
 
