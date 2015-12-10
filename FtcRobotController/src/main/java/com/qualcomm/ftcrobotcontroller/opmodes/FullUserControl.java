@@ -66,6 +66,8 @@ public class FullUserControl extends OpMode
         else
             servo.setPosition(0);
 
+        spin.setPosition(1);
+
     }
 
     public void stop(){}
