@@ -22,16 +22,14 @@ public class ArmTest extends OpMode
     }
     public void loop()
     {
-        double bucketPos = 1;
-
+        double bucketPos;
+        Servo.Direction bucketDir;
         double armPower = gamepad2.right_stick_y * 0.25;
         if(0.05 > gamepad2.right_stick_y && gamepad2.right_stick_y > -0.05)
             armPower += 0.1;
         double armPivotPower = gamepad2.left_stick_x;
         arm.setPower(armPower);
         armPivot.setPower(armPivotPower);
-        armBucket.setPosition(bucketPos);
-
     }
     public void stop(){}
 }
