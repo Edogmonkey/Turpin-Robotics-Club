@@ -68,8 +68,11 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register ("Make A Square", AutoSquare.class);
     //manager.register ("This Is A Button", TouchTest.class);
     //manager.register ("ODS Test", SensorTest.class);
-    //manager.register ("Servo Test", ServoTest.class);
+    manager.register ("Servo Test", ServoTest.class);
     manager.register ("RedBlueTest", RedBlueTest.class);
+    manager.register ("2 Beacon 10 A", A2beacon10.class);
+    manager.register ("2 Beacon 10 B", B2beacon10.class);
+
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
