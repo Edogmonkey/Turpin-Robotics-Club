@@ -115,7 +115,7 @@ public class Drive{
 
 
 
-        final  double ROTATIONS = (20 * degrees) / (WHEEL_DIAMETER * 360);
+        final  double ROTATIONS = (17.5 * degrees) / (WHEEL_DIAMETER * 360);// was 20 * degrees
         final  double COUNTS = ENCODER_CPR * ROTATIONS * GEAR_RATIO;
 
         motor1.setTargetPosition((int) -COUNTS);

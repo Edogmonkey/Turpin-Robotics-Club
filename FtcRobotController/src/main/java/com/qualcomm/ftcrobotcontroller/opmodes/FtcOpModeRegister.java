@@ -60,26 +60,30 @@ public class FtcOpModeRegister implements OpModeRegister {
     //manager.register("K9TeleOp", K9TeleOp.class);
     //manager.register ("PushBotAuto", PushBotAuto.class);
     //manager.register ("PushBotManual", PushBotManual.class);
-    manager.register("Armature_Test", ArmTest.class);
-    manager.register ("Tank Drive 2", TankDrive2.class);
+    //manager.register("Armature_Test", ArmTest.class);
+    //manager.register ("Tank Drive 2", TankDrive2.class);
     manager.register("Full User Control", FullUserControl.class);
-    manager.register ("OneRotation", OneRotation.class);
+    //manager.register ("OneRotation", OneRotation.class);
     //manager.register ("Mechanim Drive", mechanimDrive.class);
     //manager.register ("motor test", motortest.class);
     //manager.register ("Make A Square", AutoSquare.class);
     //manager.register ("This Is A Button", TouchTest.class);
     //manager.register ("ODS Test", SensorTest.class);
-    manager.register ("Servo Test", ServoTest.class);
+    //manager.register ("Servo Test", ServoTest.class);
     manager.register ("RedBlueTest", RedBlueTest.class);
     manager.register ("2 Beacon 10 A", A2beacon10.class);
     manager.register ("2 Beacon 10 B", B2beacon10.class);
+    manager.register ("1 Beacon 10 A", A1beacon10.class);
+    manager.register ("3 Beacon 10 B", B3beacon10.class);
+    manager.register ("2 AMount 0 B", B2amount0.class);
+    //manager.register ("1 Beacon 10 A", A1beacon10.class);
 
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
 
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
-    manager.register("MRRGBExample", MRRGBExample.class);
+    //manager.register("MRRGBExample", MRRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
     //manager.register("HTRGBExample", HTRGBExample.class);
 

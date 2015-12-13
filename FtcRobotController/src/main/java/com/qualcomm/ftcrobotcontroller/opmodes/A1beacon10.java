@@ -6,7 +6,8 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 /**
  * Created by Cole Salvato on 12/12/2015.
  */
-public class B2beacon10 extends LinearOpMode
+
+public class A1beacon10 extends LinearOpMode
 {
     public void runOpMode() throws InterruptedException{
 
@@ -27,10 +28,11 @@ public class B2beacon10 extends LinearOpMode
         waitForStart();
         myDrive.backward(6, 0.5);
         sleep(10000);
+        myDrive.backward(66, 0.5);
 
-        myDrive.pointturn(45, 0.25);
+        myDrive.pointturn(90, 0.25);
 
-        myDrive.backward(88, 0.5);
+        myDrive.backward(44, 0.5);
 
 
 
