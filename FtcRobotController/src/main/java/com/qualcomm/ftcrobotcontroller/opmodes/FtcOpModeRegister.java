@@ -43,7 +43,7 @@ public class FtcOpModeRegister implements OpModeRegister {
    * The Op Mode Manager will call this method when it wants a list of all
    * available op modes. Add your op mode to the list to enable it.
    *
-   *  @param manager op mode manager
+   * @param manager op mode manager
    */
   public void register(OpModeManager manager) {
 
@@ -54,31 +54,27 @@ public class FtcOpModeRegister implements OpModeRegister {
      *
      * If two or more op modes are registered with the same name, the app will display an error.
      */
+    manager.register("Full User Control", FullUserControl.class);
+    manager.register("Red Blue Test", RedBlueTest.class);
 
     manager.register("NullOp", NullOp.class);
 
-    //manager.register("K9TeleOp", K9TeleOp.class);
-    //manager.register ("PushBotAuto", PushBotAuto.class);
-    //manager.register ("PushBotManual", PushBotManual.class);
-    manager.register("Armature_Test", ArmTest.class);
-    manager.register ("Tank Drive 2", TankDrive2.class);
-    manager.register("Full User Control", FullUserControl.class);
-    manager.register ("OneRotation", OneRotation.class);
-    //manager.register ("Mechanim Drive", mechanimDrive.class);
-    //manager.register ("motor test", motortest.class);
-    //manager.register ("Make A Square", AutoSquare.class);
-    //manager.register ("This Is A Button", TouchTest.class);
-    //manager.register ("ODS Test", SensorTest.class);
-    //manager.register ("Servo Test", ServoTest.class);
-    manager.register ("RedBlueTest", RedBlueTest.class);
+
+    //manager.register("MatrixK9TeleOp", MatrixK9TeleOp.class);
+    manager.register("K9TeleOp", K9TeleOp.class);
+    manager.register("K9Line", K9Line.class);
+    manager.register ("PushBotAuto", PushBotAuto.class);
+    manager.register ("PushBotManual", PushBotManual.class);
+
+
+
     /*
      * Uncomment any of the following lines if you want to register an op mode.
      */
+    manager.register("MR Gyro Test", MRGyroTest.class);
 
     //manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
-    manager.register("MRRGBExample", MRRGBExample.class);
     //manager.register("ColorSensorDriver", ColorSensorDriver.class);
-    //manager.register("HTRGBExample", HTRGBExample.class);
 
     //manager.register("IrSeekerOp", IrSeekerOp.class);
     //manager.register("CompassCalibration", CompassCalibration.class);
@@ -86,25 +82,22 @@ public class FtcOpModeRegister implements OpModeRegister {
 
 
     //manager.register("NxtTeleOp", NxtTeleOp.class);
-    
+
     //manager.register("LinearK9TeleOp", LinearK9TeleOp.class);
     //manager.register("LinearIrExample", LinearIrExample.class);
 
-    
+
     //manager.register ("PushBotManual1", PushBotManual1.class);
     //manager.register ("PushBotAutoSensors", PushBotAutoSensors.class);
     //manager.register ("PushBotIrEvent", PushBotIrEvent.class);
-    
+
     //manager.register ("PushBotManualSensors", PushBotManualSensors.class);
     //manager.register ("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
     //manager.register ("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);
-    //manager.register ("PushBotTouchEvent", PushBotTouchEvent.class);    
-    
-    //manager.register("PushBotDriveTouch", PushBotDriveTouch.class);
-    //manager.register("PushBotIrSeek", PushBotIrSeek.class);
-    //manager.register("PushBotSquare", PushBotSquare.class);
+    //manager.register ("PushBotTouchEvent", PushBotTouchEvent.class);
 
-    
-    
+    //manager.register("PushBotDriveTouch", PushBotDriveTouch.java);
+    //manager.register("PushBotIrSeek", PushBotIrSeek.java);
+    //manager.register("PushBotSquare", PushBotSquare.java);
   }
 }

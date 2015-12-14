@@ -30,10 +30,10 @@ public class FullUserControl extends OpMode
         twist = hardwareMap.dcMotor.get("motorTwist");
         lift = hardwareMap.dcMotor.get("motorLift");
         right.setDirection(DcMotor.Direction.REVERSE);
-        lift.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        twist.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        lift.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        twist.setChannelMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        lift.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        twist.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        lift.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        twist.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -54,7 +54,7 @@ public class FullUserControl extends OpMode
             twist.setPower(0);
 
         if (gamepad2.dpad_up && gamepad2.dpad_down)
-            lift.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+            lift.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
         else if (gamepad2.dpad_up && twist.getCurrentPosition() < ENCODER_LIMIT){
             lift.setPower(-0.25);
             lift.setTargetPosition(lift.getCurrentPosition());}
@@ -62,7 +62,7 @@ public class FullUserControl extends OpMode
             lift.setPower(0.50);
             lift.setTargetPosition(lift.getCurrentPosition());}
         else
-            lift.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+            lift.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
 
         if (gamepad2.left_bumper){
             servo.setDirection(Servo.Direction.FORWARD);
