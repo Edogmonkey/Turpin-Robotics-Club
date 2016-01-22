@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by Cole Salvato on 11/27/2015.
+ * Created by QuantumStatus on 11/27/2015.
  */
 public class Drive{
     static DcMotor motor1;
@@ -34,8 +34,8 @@ public class Drive{
             //motor2.setDirection(DcMotor.Direction.REVERSE);
             motor1.setDirection(DcMotor.Direction.REVERSE);
         }
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
 
 
@@ -46,8 +46,8 @@ public class Drive{
     public static void forward(double DISTANCE, double power) throws InterruptedException{
 
 
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
 
 
@@ -57,8 +57,8 @@ public class Drive{
         final  double COUNTS = ENCODER_CPR * ROTATIONS * GEAR_RATIO;
         motor1.setTargetPosition((int) COUNTS);
         motor2.setTargetPosition((int) COUNTS);
-        motor1.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
-        motor2.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor1.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor2.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
         motor1.setPower(power);
         motor2.setPower(power);
 
@@ -67,8 +67,8 @@ public class Drive{
         motor1.setPower(0);
         motor2.setPower(0);
 
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
         sleep(50);
 
@@ -80,8 +80,8 @@ public class Drive{
     public static void backward(double DISTANCE, double power) throws InterruptedException{
 
 
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
 
 
@@ -90,8 +90,8 @@ public class Drive{
         final  double COUNTS = ENCODER_CPR * ROTATIONS * GEAR_RATIO;
         motor1.setTargetPosition((int) -COUNTS);
         motor2.setTargetPosition((int) -COUNTS);
-        motor1.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
-        motor2.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor1.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor2.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
         motor1.setPower(-power);
         motor2.setPower(-power);
 
@@ -99,8 +99,8 @@ public class Drive{
         motor1.setPower(0);
         motor2.setPower(0);
 
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
 
         sleep(50);
@@ -120,8 +120,8 @@ public class Drive{
 
         motor1.setTargetPosition((int) -COUNTS);
         motor2.setTargetPosition((int) COUNTS);
-        motor1.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
-        motor2.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor1.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor2.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
         if(degrees > 0){
         motor1.setPower(-power);
         motor2.setPower(power);
@@ -139,8 +139,8 @@ public class Drive{
         motor1.setPower(0);
         motor2.setPower(0);
 
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
         sleep(50);
 
@@ -161,8 +161,8 @@ public class Drive{
         double powerRatio = (2*radius-30)/(2*WHEEL_DIAMETER*radius);
 
         motor2.setTargetPosition((int) COUNTS);
-        motor1.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RUN_TO_POSITION);
+        motor1.setMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
 
             motor1.setPower(power * powerRatio);
             motor2.setPower(power);
@@ -171,8 +171,8 @@ public class Drive{
             {}
         motor1.setPower(0);
         motor2.setPower(0);
-        motor1.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
-        motor2.setChannelMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor1.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        motor2.setMode(DcMotorController.RunMode.RESET_ENCODERS);
 
         sleep(50);
 

@@ -2,34 +2,57 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by Edogmonkey on 11/12/2015.
+ * Created by QuantumStatus on 11/12/2015.
  */
 public class ArmTest extends OpMode
 {
 
-    DcMotor arm;
-    DcMotor armPivot;
-    Servo armBucket;
+    DcMotor lift;
+    Servo bucket;
+    Servo spin;
+    int ENCODER_LIMIT;
 
     public void init()
     {
-        arm = hardwareMap.dcMotor.get("motorArm");
-        armPivot = hardwareMap.dcMotor.get("motorPivot");
-        armBucket = hardwareMap.servo.get("servoBucket");
+        lift = hardwareMap.dcMotor.get("lift");
+        bucket = hardwareMap.servo.get("bucket");
+        spin = hardwareMap.servo.get("spin");
+        lift.setDirection(DcMotor.Direction.REVERSE);
+        lift.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        lift.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        ENCODER_LIMIT = -360;
     }
     public void loop()
     {
-        double bucketPos;
-        Servo.Direction bucketDir;
-        double armPower = gamepad2.right_stick_y * 0.25;
-        if(0.05 > gamepad2.right_stick_y && gamepad2.right_stick_y > -0.05)
-            armPower += 0.1;
-        double armPivotPower = gamepad2.left_stick_x;
-        arm.setPower(armPower);
-        armPivot.setPower(armPivotPower);
+        if (gamepad2.left_stick_y > 0.05 && lift.getCurrentPosition() > ENCODER_LIMIT){
+            lift.setPower(-0.75);
+            lift.setTargetPosition(lift.getCurrentPosition());}
+        else if (gamepad2.left_stick_y < -0.5){
+            lift.setPower(0.5);
+            lift.setTargetPosition(lift.getCurrentPosition());}
+        else
+            lift.setMode(DcMotorController.RunMode.RUN_TO_POSITION);
+
+        if (gamepad2.x){
+            bucket.setPosition(1);}
+        else if (gamepad2.b){
+            bucket.setPosition(0);}
+
+        if (gamepad2.a){
+            spin.setDirection(Servo.Direction.FORWARD);
+            spin.setPosition(1);}
+        else if (gamepad2.y){
+            spin.setDirection(Servo.Direction.REVERSE);
+            spin.setPosition(1);}
+        else
+            spin.setPosition(0.47);
+
+        telemetry.addData("Lift", lift.getCurrentPosition());
+        telemetry.addData("Target", lift.getTargetPosition());
     }
     public void stop(){}
 }

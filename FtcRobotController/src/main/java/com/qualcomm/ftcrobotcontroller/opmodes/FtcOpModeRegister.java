@@ -57,7 +57,10 @@ public class FtcOpModeRegister implements OpModeRegister {
 
     //manager.register("Red Blue Test", RedBlueTest.class);
     manager.register("Full User Control", FullUserControl.class);
+    manager.register("Arm Tester", ArmTester.class);
+    manager.register("Full Redux", FullRedux.class);
     manager.register("Servo Test", ServoTest.class);
+    manager.register("Arm Test", ArmTest.class);
     manager.register("A1beacon10", A1beacon10.class);
     manager.register("A2beacon10", A2beacon10.class);
     manager.register("B2amount0", B2amount0.class);

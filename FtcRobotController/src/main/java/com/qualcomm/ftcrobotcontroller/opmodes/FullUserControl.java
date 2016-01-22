@@ -56,7 +56,7 @@ public class FullUserControl extends OpMode
             twist.setPower(0);
         else if (gamepad2.dpad_right)
             twist.setPower(0.075);
-        else if (gamepad2.dpad_left /*&& twist.getCurrentPosition() < ENCODER_LIMIT*/)
+        else if (gamepad2.dpad_left && twist.getCurrentPosition() < ENCODER_LIMIT)
             twist.setPower(-0.075);
         else
             twist.setPower(0);
