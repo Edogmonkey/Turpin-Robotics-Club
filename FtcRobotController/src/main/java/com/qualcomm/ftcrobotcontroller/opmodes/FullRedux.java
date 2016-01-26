@@ -9,6 +9,10 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by QuantumStatus on 12/26/2015.
  */
 
+/**
+ * This program enables full control of the robot from the .
+ */
+
 public class FullRedux extends OpMode {
 
     DcMotor motorRight;     // Motor Controller 1: Port 1
@@ -17,7 +21,7 @@ public class FullRedux extends OpMode {
     DcMotor motorBucket;    // Motor Controller 3: Port 1
     DcMotor motorLift;      // Motor Controller 3: Port 2
     Servo servoPlow;        // Servo Controller 1: Port 1
-    //Servo servoSpin;        // Servo Controller 1: Port 2
+    //Servo servoSpin;      // Servo Controller 1: Port 2
     boolean plowExtended;
     double plowLength;
     double plowExtension;
@@ -32,7 +36,7 @@ public class FullRedux extends OpMode {
         motorLift = hardwareMap.dcMotor.get("motorLift");
         motorTwist = hardwareMap.dcMotor.get("motorTwist");
         //servoSpin = hardwareMap.servo.get("servoSpin");
-        servoPlow = hardwareMap.servo.get("servoPlow");
+        servoPlow = hardwareMap.servo.get("servo");
 
         // Reverse left motor and twist motor
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
