@@ -21,10 +21,18 @@ public class FullRedux extends OpMode {
     DcMotor motorBucket;    // Motor Controller 3: Port 1
     DcMotor motorLift;      // Motor Controller 3: Port 2
     Servo servoPlow;        // Servo Controller 1: Port 1
-    //Servo servoSpin;      // Servo Controller 1: Port 2
+    Servo servoSpin;        // Servo Controller 1: Port 2
+    Servo servoBucket;      // Servo Controller 1: Port 3
+    //Servo servoClawLeft;
+    //Servo servoClawRight;
+
     boolean plowExtended;
     double plowLength;
     double plowExtension;
+    boolean clawPivoted;
+    double clawPosition;
+    double clawPivot;
+    double servoBucketPosition;
     int ENCODER_LIMIT;
 
     public void init() {
@@ -35,11 +43,15 @@ public class FullRedux extends OpMode {
         motorBucket = hardwareMap.dcMotor.get("motorBucket");
         motorLift = hardwareMap.dcMotor.get("motorLift");
         motorTwist = hardwareMap.dcMotor.get("motorTwist");
-        //servoSpin = hardwareMap.servo.get("servoSpin");
+        servoSpin = hardwareMap.servo.get("servoSpin");
         servoPlow = hardwareMap.servo.get("servo");
+        //servoClawLeft = hardwareMap.servo.get("servoClawLeft");
+        //servoClawRight = hardwareMap.servo.get("servoClawRight");
+        servoBucket = hardwareMap.servo.get("servoBucket");
 
-        // Reverse left motor and twist motor
+        // Reverse left, lift, and twist motor
         motorLeft.setDirection(DcMotor.Direction.REVERSE);
+        motorLift.setDirection(DcMotor.Direction.REVERSE);
         motorTwist.setDirection(DcMotor.Direction.REVERSE);
 
         // Reset motor encoders
@@ -51,10 +63,12 @@ public class FullRedux extends OpMode {
         motorTwist.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
         ENCODER_LIMIT = 360;
-        plowLength = servoPlow.getPosition();
-        plowExtended = false;
-        plowExtension = 0.4;
 
+        plowExtended = false;
+        plowLength = servoPlow.getPosition();
+        plowExtension = 0.4;
+        clawPivoted = false;
+        clawPivot = 0.5;
         //motorLift.setTargetPosition(motorLift.getCurrentPosition());
 
     }
@@ -79,7 +93,7 @@ public class FullRedux extends OpMode {
         /*if (gamepad2.dpad_up && gamepad2.dpad_down) {
             motorLift.setMode(DcMotorController.RunMode.RUN_TO_POSITION); }
         else if (gamepad2.dpad_up && motorLift.getCurrentPosition() < ENCODER_LIMIT) {
-            motorLift.setMode(DcMotor.RunMode.);
+            motorLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             motorLift.setPower(0.25);
             motorLift.setTargetPosition(motorLift.getCurrentPosition()); }
         else if (gamepad2.dpad_down) {
@@ -91,7 +105,7 @@ public class FullRedux extends OpMode {
         if (gamepad2.dpad_up && gamepad2.dpad_down) {
             motorLift.setPower(0); }
         else if (gamepad2.dpad_up) {
-            motorLift.setPower(0.25); }
+            motorLift.setPower(0.75); }
         else if (gamepad2.dpad_down) {
             motorLift.setPower(-0.125); }
         else {
@@ -104,22 +118,74 @@ public class FullRedux extends OpMode {
         if (gamepad2.left_trigger > 0.1 && gamepad2.right_trigger > 0.1) {
             motorBucket.setPower(0); }
         else if (gamepad2.left_trigger > 0.1) {
-            motorBucket.setPower((double)gamepad2.left_trigger); }
+            motorBucket.setPower(gamepad2.left_trigger); }
         else if (gamepad2.right_trigger > 0.1) {
-            motorBucket.setPower((double)gamepad2.right_trigger); }
+            motorBucket.setPower(-gamepad2.right_trigger); }
         else {
             motorBucket.setPower(0); }
 
         // Extend plow
-        if (gamepad1.dpad_up && !plowExtended) {
+        if (gamepad1.right_bumper && !plowExtended) {
             plowExtended = true;
             plowLength += plowExtension; }
         // Retract plow
-        else if (gamepad1.dpad_down && plowExtended) {
+        else if (gamepad1.right_bumper && plowExtended) {
             plowExtended = false;
             plowLength -= plowExtension; }
         // Set plow position
         servoPlow.setPosition(plowLength);
+
+        /*if (gamepad1.left_bumper && !clawPivoted)
+        {
+            clawPivoted = true;
+            servoClawLeft.setPosition(clawPivot += clawPosition);
+            servoClawRight.setPosition(clawPivot += clawPosition);
+        }
+        else if (gamepad1.left_bumper && clawPivoted)
+        {
+            clawPivoted = false;
+            servoClawLeft.setPosition(clawPivot -= clawPosition);
+            servoClawRight.setPosition(clawPivot -= clawPosition);
+        }*/
+
+        if (gamepad2.left_bumper && gamepad2.right_bumper)
+        {
+            servoBucketPosition = 0.5;
+        }
+        else if (gamepad2.left_bumper)
+        {
+            servoBucketPosition += 0.01;
+        }
+        else if (gamepad2.right_bumper)
+        {
+            servoBucketPosition -= 0.01;
+        }
+        if (servoBucketPosition > 1)
+        {
+            servoBucketPosition = 1;
+        }
+        else if (servoBucketPosition < 0)
+        {
+            servoBucketPosition = 0;
+        }
+        servoBucket.setPosition(servoBucketPosition);
+
+        if (gamepad2.a)
+        {
+            servoSpin.setDirection(Servo.Direction.REVERSE);
+            servoSpin.setPosition(1);
+        }
+        else if (gamepad2.y)
+        {
+            servoSpin.setDirection(Servo.Direction.FORWARD);
+            servoSpin.setPosition(1);
+        }
+        else
+        {
+            servoSpin.setPosition(0.49);
+        }
+
+
 
     }
 

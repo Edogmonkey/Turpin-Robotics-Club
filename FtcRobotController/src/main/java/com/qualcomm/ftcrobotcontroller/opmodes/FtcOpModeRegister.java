@@ -55,17 +55,11 @@ public class FtcOpModeRegister implements OpModeRegister {
      * If two or more op modes are registered with the same name, the app will display an error.
      */
 
-    //manager.register("Red Blue Test", RedBlueTest.class);
-    manager.register("Full User Control", FullUserControl.class);
     manager.register("Arm Tester", ArmTester.class);
     manager.register("Full Redux", FullRedux.class);
+    manager.register("Servo Claw Reset", servoClawReset.class);
     manager.register("Servo Test", ServoTest.class);
     manager.register("Arm Test", ArmTest.class);
-    manager.register("A1beacon10", A1beacon10.class);
-    manager.register("A2beacon10", A2beacon10.class);
-    manager.register("B2amount0", B2amount0.class);
-    manager.register("B2beacon10", B2beacon10.class);
-    manager.register("B3beacon10", B3beacon10.class);
 
     //manager.register("NullOp", NullOp.class);
 
